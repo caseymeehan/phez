@@ -1,0 +1,8 @@
+.DS_Store
+.obsidian/
+.claude/
+reference repo/
+
+# Ignore all root-level markdown except CLAUDE.md
+/*.md
+!CLAUDE.md
