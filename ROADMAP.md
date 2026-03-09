@@ -1,11 +1,12 @@
 # Phez Roadmap
 
-## Phase 1 — GitHub Pages Output System
+## Phase 1 — GitHub Pages Output System ✓
 Quick win. Simple publish pipeline so Phez can post markdown as live webpages. Every future skill can output to the web.
 
-- Publish script: markdown → HTML → `docs/` → auto-push
-- Minimal template for clean output pages
-- Index page lists all published outputs
+- ✓ Publish script: markdown → HTML → `docs/` → auto-push
+- ✓ Minimal template for clean output pages
+- ✓ Index page lists all published outputs
+- ✓ Live at https://caseymeehan.github.io/phez/
 
 ## Phase 2 — Skills System (starting with X)
 `skills/` folder with markdown instruction files. X/Twitter integration is the first skill — pull and analyze tweets using API key. Skills compose with each other.
