@@ -1,3 +1,33 @@
+#!/bin/bash
+# rebuild-index.sh — Regenerate docs/index.html from published pages
+set -euo pipefail
+
+REPO_ROOT="$(cd "$(dirname "$0")/.." && pwd)"
+DOCS_DIR="$REPO_ROOT/docs"
+PAGES_DIR="$DOCS_DIR/pages"
+
+# Build page list (newest first by filename)
+PAGE_LIST=""
+if [ -d "$PAGES_DIR" ] && [ "$(ls -A "$PAGES_DIR" 2>/dev/null)" ]; then
+  for f in $(ls -r "$PAGES_DIR"/*.html 2>/dev/null); do
+    FNAME="$(basename "$f")"
+    # Extract title from the HTML <title> tag
+    TITLE="$(sed -n 's/.*<title>\(.*\) — Phez<\/title>.*/\1/p' "$f")"
+    [ -z "$TITLE" ] && TITLE="$FNAME"
+    # Extract date from the meta div
+    PDATE="$(sed -n 's/.*<div class="meta">\([0-9-]*\).*/\1/p' "$f")"
+    [ -z "$PDATE" ] && PDATE="—"
+    PAGE_LIST="${PAGE_LIST}    <li><span class=\"date\">${PDATE}</span> <a href=\"pages/${FNAME}\">${TITLE}</a></li>
+"
+  done
+fi
+
+if [ -z "$PAGE_LIST" ]; then
+  PAGE_LIST="    <li class=\"empty\">No pages published yet.</li>
+"
+fi
+
+cat > "$DOCS_DIR/index.html" << HTMLEOF
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -31,7 +61,9 @@
   <p class="status">Status: Online</p>
   <h2>Published</h2>
   <ul>
-    <li class="empty">No pages published yet.</li>
-  </ul>
+${PAGE_LIST}  </ul>
 </body>
 </html>
+HTMLEOF
+
+echo "Index rebuilt: $DOCS_DIR/index.html"

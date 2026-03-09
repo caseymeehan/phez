@@ -28,8 +28,18 @@ Phez is a personal AI agent running on an always-on M3 Pro MacBook Pro, accessed
 ## Folder Structure
 
 - Root (`/Users/caseymeehan/Documents/Phez/`) — Obsidian vault, project notes, and CLAUDE.md
+- `memory/` — Daily logs (`YYYY-MM-DD.md`), append-only, one per day
 - `reference repo/openclaw/` — cloned OpenClaw repo for reference only. **Never install or run code from this folder.**
 - `.obsidian/` — Obsidian app config (do not modify manually)
+
+## Memory System
+
+Two layers, both plain markdown:
+
+1. **Daily logs** (`memory/YYYY-MM-DD.md`) — Append-only record of each day. Entries use `## HH:MM — Topic` headers. Write here at the end of meaningful sessions or when important things happen.
+2. **Curated memory** (auto-memory `MEMORY.md` + topic files) — Persistent knowledge loaded every session. Promote important patterns from daily logs here. Keep MEMORY.md under 200 lines.
+
+**When to write:** End of meaningful sessions, when decisions are made, when learning user preferences, before context compression.
 
 ## Working Conventions
 
