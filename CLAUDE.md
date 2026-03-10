@@ -27,7 +27,7 @@ Phez is a personal AI agent running on an always-on M3 Pro MacBook Pro, accessed
 
 ## Folder Structure
 
-- Root (`/Users/caseymeehan/Documents/Phez/`) — Obsidian vault, project notes, and CLAUDE.md
+- Root (`/Users/caseymeehan/knowledge/phez/`) — Obsidian vault, project notes, and CLAUDE.md
 - `skills/` — Phez skills. Each skill is a folder with a `SKILL.md` and scripts.
 - `cron/` — Job scheduler. `jobs.json` defines scheduled tasks, `runner.sh` executes them, crontab runs the heartbeat every 10 min.
 - `scripts/` — Utility scripts (publish pipeline, etc.) — not skills, but plumbing skills use.
@@ -54,7 +54,7 @@ Two layers, both plain markdown:
 ## Quick Start (from Termius on iPhone)
 
 ```bash
-cd /Users/caseymeehan/Documents/Phez && (tmux new -s claude -d "claude" || tmux attach -t claude)
+cd /Users/caseymeehan/knowledge/phez && (tmux new -s claude -d "claude" || tmux attach -t claude)
 ```
 
 This launches Claude Code in the Phez folder, or reattaches to an existing session.
