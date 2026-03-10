@@ -28,6 +28,9 @@ Phez is a personal AI agent running on an always-on M3 Pro MacBook Pro, accessed
 ## Folder Structure
 
 - Root (`/Users/caseymeehan/Documents/Phez/`) — Obsidian vault, project notes, and CLAUDE.md
+- `skills/` — Phez skills. Each skill is a folder with a `SKILL.md` and scripts.
+- `cron/` — Job scheduler. `jobs.json` defines scheduled tasks, `runner.sh` executes them, launchd runs the heartbeat.
+- `scripts/` — Utility scripts (publish pipeline, etc.) — not skills, but plumbing skills use.
 - `memory/` — Daily logs (`YYYY-MM-DD.md`), append-only, one per day
 - `reference repo/openclaw/` — cloned OpenClaw repo for reference only. **Never install or run code from this folder.**
 - `.obsidian/` — Obsidian app config (do not modify manually)

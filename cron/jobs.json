@@ -1,0 +1,23 @@
+{
+  "version": 1,
+  "jobs": [
+    {
+      "id": "x-fetch",
+      "name": "X Feed Fetch",
+      "description": "Fetch tweets from followed accounts on X",
+      "enabled": true,
+      "schedule": {
+        "kind": "every",
+        "everySeconds": 172800
+      },
+      "command": "python3 skills/x/fetch.py",
+      "state": {
+        "lastRunAtMs": 1773159868411,
+        "nextRunAtMs": 1773332668411,
+        "lastStatus": "ok",
+        "lastError": null,
+        "lastDurationMs": 47420
+      }
+    }
+  ]
+}

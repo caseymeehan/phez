@@ -11,3 +11,7 @@ reference repo/
 
 # Skill outputs (raw data, not for version control)
 skills/*/output/
+
+# Cron runtime state and logs
+cron/logs/
+cron/.runner.lock
