@@ -7,13 +7,14 @@
       "description": "Fetch tweets from followed accounts on X",
       "enabled": true,
       "schedule": {
-        "kind": "every",
-        "everySeconds": 172800
+        "kind": "cron",
+        "expr": "30 4 */2 * *",
+        "tz": "America/New_York"
       },
       "command": "python3 skills/x/fetch.py",
       "state": {
         "lastRunAtMs": 1773159868411,
-        "nextRunAtMs": 1773332668411,
+        "nextRunAtMs": 1773217800000,
         "lastStatus": "ok",
         "lastError": null,
         "lastDurationMs": 47420

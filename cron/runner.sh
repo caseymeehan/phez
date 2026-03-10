@@ -37,7 +37,9 @@ import json
 import os
 import subprocess
 import time
+from datetime import datetime, timedelta
 from pathlib import Path
+from zoneinfo import ZoneInfo
 
 JOBS_FILE = Path(os.environ["JOBS_FILE"])
 REPO_ROOT = Path(os.environ["REPO_ROOT"])
@@ -54,6 +56,55 @@ def save_jobs(data):
         json.dump(data, f, indent=2)
     tmp.rename(JOBS_FILE)
 
+def _parse_cron_field(field, min_val, max_val):
+    """Parse a single cron field into a set of matching values."""
+    values = set()
+    for part in field.split(","):
+        if "/" in part:
+            base, step = part.split("/", 1)
+            step = int(step)
+            if base == "*":
+                start = min_val
+            else:
+                start = int(base)
+            for v in range(start, max_val + 1, step):
+                values.add(v)
+        elif part == "*":
+            values.update(range(min_val, max_val + 1))
+        elif "-" in part:
+            lo, hi = part.split("-", 1)
+            values.update(range(int(lo), int(hi) + 1))
+        else:
+            values.add(int(part))
+    return values
+
+def _cron_next(expr, tz_name, after_ms):
+    """Compute next matching time for a 5-field cron expression after given timestamp."""
+    tz = ZoneInfo(tz_name)
+    dt = datetime.fromtimestamp(after_ms / 1000, tz=tz)
+    # Start from the next minute
+    dt = dt.replace(second=0, microsecond=0) + timedelta(minutes=1)
+
+    fields = expr.strip().split()
+    minutes = _parse_cron_field(fields[0], 0, 59)
+    hours = _parse_cron_field(fields[1], 0, 23)
+    days = _parse_cron_field(fields[2], 1, 31)
+    months = _parse_cron_field(fields[3], 1, 12)
+    dows = _parse_cron_field(fields[4], 0, 6)
+
+    # Search up to 366 days out
+    for _ in range(366 * 24 * 60):
+        # Cron: 0=Sun,1=Mon,...,6=Sat. Python weekday: 0=Mon,...,6=Sun
+        # Convert python weekday to cron: (weekday+1)%7 -> 0=Sun
+        py_dow = (dt.weekday() + 1) % 7
+        if (dt.minute in minutes and dt.hour in hours and
+            dt.day in days and dt.month in months and
+            py_dow in dows):
+            return int(dt.timestamp() * 1000)
+        dt += timedelta(minutes=1)
+
+    return None
+
 def is_due(job):
     """Check if a job should run now."""
     if not job.get("enabled", False):
@@ -64,7 +115,16 @@ def is_due(job):
     now_ms = int(time.time() * 1000)
 
     if next_run is None:
-        # Never scheduled — run immediately and set next
+        # First run: compute next from schedule, run if already past
+        schedule = job.get("schedule", {})
+        if schedule.get("kind") == "cron":
+            # For cron, compute next from 24h ago to see if we should run now
+            candidate = _cron_next(schedule["expr"], schedule.get("tz", "UTC"), now_ms - 86400000)
+            if candidate and candidate <= now_ms:
+                return True
+            # Not due yet, set nextRunAtMs for future
+            state["nextRunAtMs"] = candidate or _cron_next(schedule["expr"], schedule.get("tz", "UTC"), now_ms)
+            return False
         return True
 
     return now_ms >= next_run
@@ -77,6 +137,9 @@ def compute_next_run(job):
     if schedule.get("kind") == "every":
         interval_ms = schedule["everySeconds"] * 1000
         return now_ms + interval_ms
+
+    if schedule.get("kind") == "cron":
+        return _cron_next(schedule["expr"], schedule.get("tz", "UTC"), now_ms)
 
     return None
 
