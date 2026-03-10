@@ -3,6 +3,7 @@
 .claude/
 .env
 reference repo/
+docs/x skill - initial instructions/
 
 # Ignore all root-level markdown except CLAUDE.md
 /*.md
