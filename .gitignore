@@ -1,9 +1,13 @@
 .DS_Store
 .obsidian/
 .claude/
+.env
 reference repo/
 
 # Ignore all root-level markdown except CLAUDE.md
 /*.md
 !CLAUDE.md
 !ROADMAP.md
+
+# Skill outputs (raw data, not for version control)
+skills/*/output/
