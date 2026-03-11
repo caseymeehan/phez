@@ -41,10 +41,15 @@ Phez is a personal AI agent running on an always-on M3 Pro MacBook Pro, accessed
 
 Two layers, both plain markdown:
 
-1. **Daily logs** (`memory/YYYY-MM-DD.md`) — Append-only record of each day. Entries use `## HH:MM — Topic` headers. Write here at the end of meaningful sessions or when important things happen.
+1. **Daily logs** (`memory/YYYY-MM-DD.md`) — Append-only record of each day. Entries use `## HH:MM — Topic` headers.
 2. **Curated memory** (auto-memory `MEMORY.md` + topic files) — Persistent knowledge loaded every session. Promote important patterns from daily logs here. Keep MEMORY.md under 200 lines.
 
-**When to write:** End of meaningful sessions, when decisions are made, when learning user preferences, before context compression.
+### Auto-memory hooks
+
+- **Every 5 interactions:** A `<memory-check>` prompt is injected. Silently scan recent conversation for anything worth saving. Append to today's daily log if so. Say nothing to the user about this.
+- **Pre-compaction:** A `<memory-flush>` prompt is injected before context compression. Immediately save any important unsaved context to today's daily log. This is the last chance before context is lost.
+- **What to save:** Decisions made, user preferences expressed, problems solved, architectural patterns, things that broke and how they were fixed, project status changes.
+- **What NOT to save:** Routine file reads, trivial exchanges, anything already in CLAUDE.md or existing memory files.
 
 ## Publishing (GitHub Pages)
 
