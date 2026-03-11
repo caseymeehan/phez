@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>X Feed: Techniques &amp; Workflows — 2026-03-11 — Phez</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      max-width: 700px;
+      margin: 60px auto;
+      padding: 0 20px;
+      background: #0d1117;
+      color: #e6edf3;
+    }
+    h1 { color: #58a6ff; margin-bottom: 0.3em; }
+    h2 { color: #58a6ff; margin-top: 2em; border-bottom: 1px solid #21262d; padding-bottom: 0.3em; }
+    p { line-height: 1.6; color: #c9d1d9; }
+    a { color: #58a6ff; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .meta { color: #8b949e; font-size: 0.9em; margin-bottom: 2em; }
+    .back { margin-top: 3em; }
+    .subtitle { color: #8b949e; font-size: 1em; margin-top: 0; }
+
+    .tweet {
+      background: #161b22;
+      border: 1px solid #30363d;
+      border-radius: 12px;
+      padding: 20px;
+      margin: 16px 0;
+    }
+    .tweet-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 10px;
+    }
+    .tweet-author {
+      font-weight: 600;
+      color: #e6edf3;
+    }
+    .tweet-handle {
+      color: #8b949e;
+      font-size: 0.9em;
+      margin-left: 6px;
+    }
+    .tweet-link {
+      font-size: 0.8em;
+      color: #8b949e;
+    }
+    .tweet-body {
+      color: #c9d1d9;
+      line-height: 1.6;
+      white-space: pre-wrap;
+      font-size: 0.95em;
+    }
+    .tweet-thread {
+      border-left: 2px solid #30363d;
+      margin: 12px 0 0 8px;
+      padding-left: 16px;
+    }
+    .tweet-thread .thread-reply {
+      color: #8b949e;
+      line-height: 1.5;
+      white-space: pre-wrap;
+      font-size: 0.88em;
+      margin-bottom: 10px;
+    }
+    .tweet-stats {
+      margin-top: 12px;
+      font-size: 0.8em;
+      color: #8b949e;
+    }
+    .tweet-stats span { margin-right: 14px; }
+    .section-intro {
+      color: #8b949e;
+      font-size: 0.95em;
+      margin-bottom: 4px;
+    }
+  </style>
+</head>
+<body>
+  <div class="meta">2026-03-11 · <a href="../index.html">&larr; Phez</a></div>
+  <h1>X Feed: Techniques &amp; Workflows</h1>
+  <p class="subtitle">The most useful patterns and workflows from today's feed, with full tweets.</p>
+
+  <!-- ============================================ -->
+  <h2>Claude Code /btw — Side Conversations</h2>
+  <p class="section-intro">Chat with Claude while it's working. Single-turn, no tool calls, but full conversation context.</p>
+
+  <div class="tweet">
+    <div class="tweet-header">
+      <div><span class="tweet-author">Thariq</span> <span class="tweet-handle">@trq212</span></div>
+      <a class="tweet-link" href="https://x.com/trq212/status/2031506296697131352">view &rarr;</a>
+    </div>
+    <div class="tweet-body">We just added /btw to Claude Code!
+
+Use it to have side chain conversations while Claude is working.</div>
+    <div class="tweet-thread">
+      <div class="thread-reply">a bit more on the technical details- this cannot do any tool calls and is a single turn of output but has the entire context of your conversation
+
+s/o to @ErikSchluntz for building this as a side project
+
+read more in our docs here: https://t.co/9suUoMGLiD</div>
+      <div class="thread-reply">@swyxio @ErikSchluntz @samuelcolvin yeah maybe we should just give it read tool calls, idk surprised by how popular this is tbh</div>
+    </div>
+    <div class="tweet-stats">
+      <span>20.5K likes</span>
+      <span>1.2K retweets</span>
+      <span>1.8M impressions</span>
+    </div>
+  </div>
+
+  <!-- ============================================ -->
+  <h2>Skills as Installable Packages</h2>
+  <p class="section-intro">Reusable AI skills shared via package managers, working across agents. The npm-for-agents pattern is emerging.</p>
+
+  <div class="tweet">
+    <div class="tweet-header">
+      <div><span class="tweet-author">Min Choi</span> <span class="tweet-handle">@minchoi</span></div>
+      <a class="tweet-link" href="https://x.com/minchoi/status/2031488299240415642">view &rarr;</a>
+    </div>
+    <div class="tweet-body">This Claude Skill is literally a $1,000 App Store designer
+
+Setup + skill in comment</div>
+    <div class="tweet-thread">
+      <div class="thread-reply">Install in 1 line:
+
+npx skills add ParthJadhav/app-store-screenshots
+
+Works with Claude Code, Cursor, Windsurf, Codex, 40+ agents.
+
+Then just say: "Build App Store screenshots for my app"
+
+Claude asks about your brand, features, style... then builds everything.</div>
+    </div>
+    <div class="tweet-stats">
+      <span>866 likes</span>
+      <span>2K bookmarks</span>
+      <span>103K impressions</span>
+    </div>
+  </div>
+
+  <div class="tweet">
+    <div class="tweet-header">
+      <div><span class="tweet-author">Dan Shipper</span> <span class="tweet-handle">@danshipper</span></div>
+      <a class="tweet-link" href="https://x.com/danshipper/status/2031394929365467253">view &rarr;</a>
+    </div>
+    <div class="tweet-body">i made a growth investigator skill in Codex that looks through all of your PostHog / prod database data and then finds the top bottlenecks and insights in your product
+
+it works extremely well</div>
+    <div class="tweet-thread">
+      <div class="thread-reply">install the skill yourself from the @every skill library!
+
+https://t.co/KhVixFtXV4</div>
+      <div class="thread-reply">@trevin yup public and open source</div>
+    </div>
+    <div class="tweet-stats">
+      <span>252 likes</span>
+      <span>420 bookmarks</span>
+      <span>48K impressions</span>
+    </div>
+  </div>
+
+  <div class="tweet">
+    <div class="tweet-header">
+      <div><span class="tweet-author">Matt Pocock</span> <span class="tweet-handle">@mattpocockuk</span></div>
+      <a class="tweet-link" href="https://x.com/mattpocockuk/status/2031361822050193477">view &rarr;</a>
+    </div>
+    <div class="tweet-body">Today's task: working on an /improve-codebase-architecture skill
+
+Feeling good so far</div>
+    <div class="tweet-thread">
+      <div class="thread-reply">@corsairdotdev I usually do this because my architecture is bad and I can't easily write e2e tests. So not usually an option</div>
+      <div class="thread-reply">@Eduardopto The idea is increasing testability, not improving speed</div>
+    </div>
+    <div class="tweet-stats">
+      <span>293 likes</span>
+      <span>226 bookmarks</span>
+      <span>29K impressions</span>
+    </div>
+  </div>
+
+  <div class="tweet">
+    <div class="tweet-header">
+      <div><span class="tweet-author">Thariq</span> <span class="tweet-handle">@trq212</span></div>
+      <a class="tweet-link" href="https://x.com/trq212/status/2031519685347520859">view &rarr;</a>
+    </div>
+    <div class="tweet-body">yeahhh on my to do list, but tbh a lot of what makes it magic is having the component library working
+
+I have the Claude component library but I could make some generic ones to release as a skill</div>
+    <div class="tweet-stats">
+      <span>41 likes</span>
+    </div>
+  </div>
+
+  <!-- ============================================ -->
+  <h2>Codex PR Workflow</h2>
+  <p class="section-intro">Treating Codex like a junior dev: prompt changes, guide implementation, review outputs, split PRs.</p>
+
+  <div class="tweet">
+    <div class="tweet-header">
+      <div><span class="tweet-author">OpenAI Developers</span> <span class="tweet-handle">@OpenAIDevs</span></div>
+      <a class="tweet-link" href="https://x.com/OpenAIDevs/status/2031468378687418405">view &rarr;</a>
+    </div>
+    <div class="tweet-body">Here's how @bolinfest uses Codex to code by prompting changes, guiding implementation, reviewing outputs, and splitting large PRs into reviewable commits.</div>
+    <div class="tweet-thread">
+      <div class="thread-reply">Catch his chat with @ryanlpeterman here:
+
+https://t.co/JPNG5H90U0</div>
+    </div>
+    <div class="tweet-stats">
+      <span>386 likes</span>
+      <span>356 bookmarks</span>
+      <span>42K impressions</span>
+    </div>
+  </div>
+
+  <!-- ============================================ -->
+  <h2>Vibe Coding for Revenue</h2>
+  <p class="section-intro">Zero hand-written code to $300K ARR. The full pipeline: audience research &rarr; solution design &rarr; AI coding &rarr; ship.</p>
+
+  <div class="tweet">
+    <div class="tweet-header">
+      <div><span class="tweet-author">Alex Finn</span> <span class="tweet-handle">@AlexFinn</span></div>
+      <a class="tweet-link" href="https://x.com/AlexFinn/status/2031559776451371009">view &rarr;</a>
+    </div>
+    <div class="tweet-body">Don't listen to the jealous losers who are saying you can't vibe code serious apps
+
+100% lies
+
+I vibe coded Creator Buddy using Codex/CC by myself. 0 lines of code written
+
+$300,000 ARR on 90% margins. Changed my life.
+
+You absolutely can do this. The steps are simple:
+
+1. Ask Grok what challenges your audience on X has
+2. Ask Grok for a solution to those challenges
+3. Download Codex (you can use your $20 plan)
+4. Put that solution into Codex
+5. Watch Codex build the entire solution for you.
+6. Release it to your audience
+
+By the time all the skeptics on X realize Codex is actually one of the most powerful softwares ever released, it will be too late
+
+Get to work</div>
+    <div class="tweet-thread">
+      <div class="thread-reply">Lot of questions in the about codex vs claude code
+
+been using Codex a lot more lately, I prefer it at the moment.
+
+seems to be very logical and makes the smart decision more. also very fast, and way higher limits. I'm also WILDLY impressed with chatgpt 5.4
+
+space moves fast tho</div>
+    </div>
+    <div class="tweet-stats">
+      <span>951 likes</span>
+      <span>840 bookmarks</span>
+      <span>54K impressions</span>
+    </div>
+  </div>
+
+  <!-- ============================================ -->
+  <h2>AI-as-X-Reader Pipeline</h2>
+  <p class="section-intro">Read thousands of X posts via API &rarr; generate report &rarr; NotebookLM &rarr; podcast, slides, mind map. Full newsletter automation.</p>
+
+  <div class="tweet">
+    <div class="tweet-header">
+      <div><span class="tweet-author">Robert Scoble</span> <span class="tweet-handle">@Scobleizer</span></div>
+      <a class="tweet-link" href="https://x.com/Scobleizer/status/2031447703885066404">view &rarr;</a>
+    </div>
+    <div class="tweet-body">AI can read X better than you can.
+
+Then it can create a Notebook LM for you.
+
+Here's today's news, as a podcast, a slide deck, a mind map, video to come in a bit:
+
+https://t.co/DHvgGpq7U6
+
+All gathered by Levangie Labs by reading tens of thousands of posts here on X through the X API.</div>
+    <div class="tweet-stats">
+      <span>127 likes</span>
+      <span>147 bookmarks</span>
+      <span>38K impressions</span>
+    </div>
+  </div>
+
+  <!-- ============================================ -->
+  <h2>Compute Cost as Job Protection</h2>
+  <p class="section-intro">Agentic AI is expensive. Compute scarcity means companies will only automate high-value tasks — humans remain cheaper for most jobs.</p>
+
+  <div class="tweet">
+    <div class="tweet-header">
+      <div><span class="tweet-author">Ethan Mollick</span> <span class="tweet-handle">@emollick</span></div>
+      <a class="tweet-link" href="https://x.com/emollick/status/2031602680125120839">view &rarr;</a>
+    </div>
+    <div class="tweet-body">A big determinant of AI's job impact is driven by the lack of compute, especially for agentic work, which takes a lot of it. That makes AI expensive.
+
+So companies will only want to burn compute on high-value tasks (eg coding), because, in other jobs, humans remain much cheaper.</div>
+    <div class="tweet-thread">
+      <div class="thread-reply">Yes, this is the competitive advantage argument economists have been discussing for awhile, but it is coming true.
+
+There will not be enough compute for many years to automate many human jobs, even assuming AI can do that work and companies are willing to replace the people.</div>
+      <div class="thread-reply">It is not uncommon for engineers who are really using AI to spend thousands of dollars a day on AI. That is not an expense you are going to be willing to take for many jobs out there. Prices will drop, but demand is still going up and supply is constrained.</div>
+    </div>
+    <div class="tweet-stats">
+      <span>358 likes</span>
+      <span>94 bookmarks</span>
+      <span>21K impressions</span>
+    </div>
+  </div>
+
+  <!-- ============================================ -->
+  <h2>NotebookLM Video Generation</h2>
+  <p class="section-intro">Deep Research report &rarr; generated video presentation. Two prompts, zero manual work.</p>
+
+  <div class="tweet">
+    <div class="tweet-header">
+      <div><span class="tweet-author">Ethan Mollick</span> <span class="tweet-handle">@emollick</span></div>
+      <a class="tweet-link" href="https://x.com/emollick/status/2031229858236232065">view &rarr;</a>
+    </div>
+    <div class="tweet-body">NotebookLM: Do a deep research report and make a video where a consultant gives Sauron a strategy for actually winning the War of the Ring: "All you need to do is sign off to put a simple door on your volcano"
+
+The new video generation feature for NotebookLM is very impressive.</div>
+    <div class="tweet-thread">
+      <div class="thread-reply">This is 100% AI generated, I only gave it the prompt to do a Deep Research report on how Sauron could win the war and a second prompt to turn it into a video from a consultant offering advice to Sauron.</div>
+    </div>
+    <div class="tweet-stats">
+      <span>978 likes</span>
+      <span>636 bookmarks</span>
+      <span>217K impressions</span>
+    </div>
+  </div>
+
+  <!-- ============================================ -->
+  <h2>Perplexity Computer</h2>
+  <p class="section-intro">Full-stack apps built by describing what you want. WebRTC, encryption, multiple libraries orchestrated automatically.</p>
+
+  <div class="tweet">
+    <div class="tweet-header">
+      <div><span class="tweet-author">Aravind Srinivas</span> <span class="tweet-handle">@AravSrinivas</span></div>
+      <a class="tweet-link" href="https://x.com/AravSrinivas/status/2031414450046259433">view &rarr;</a>
+    </div>
+    <div class="tweet-body">Another cool app built with Perplexity Computer. A peer to peer file(s) transfer web app. Sends files directly with no accounts using WebRTC and DTLS encryption, file chunking, socket io signaling. I am impressed by how many libraries and tools Computer can orchestrate reliably.</div>
+    <div class="tweet-stats">
+      <span>555 likes</span>
+      <span>178 bookmarks</span>
+      <span>42K impressions</span>
+    </div>
+  </div>
+
+  <div class="back"><a href="../index.html">&larr; Back to index</a></div>
+</body>
+</html>
