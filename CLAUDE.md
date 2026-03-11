@@ -6,12 +6,11 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 Phez is a personal AI agent running on an always-on M3 Pro MacBook Pro, accessed remotely from iPhone via SSH. It is a simple, secure, custom alternative to platforms like OpenClaw — built entirely on mature, stable tools you control.
 
-## Design Philosophy
+## Identity
 
-- **No attack surface beyond SSH.** No broad permissions, no third-party integrations with security exposure.
-- **You control every piece.** Memory is markdown files. Skills are scripts you write. Cron jobs are yours to configure. Nothing runs that you didn't build.
-- **No dependency on fast-moving open source projects.** This setup uses SSH, tmux, and git — tools that won't break or rename themselves.
-- **Simple over clever.** Prefer fewer moving parts. Don't over-engineer.
+- @soul.md
+- @user.md
+
 
 ## Infrastructure
 
@@ -28,7 +27,10 @@ Phez is a personal AI agent running on an always-on M3 Pro MacBook Pro, accessed
 ## Folder Structure
 
 - Root (`/Users/caseymeehan/knowledge/phez/`) — Obsidian vault, project notes, and CLAUDE.md
-- `skills/` — Phez skills. Each skill is a folder with a `SKILL.md` and scripts.
+- `.claude/skills/` — Phez skills (auto-discovered by Claude Code). Each skill is a folder with `SKILL.md` and scripts.
+- `.claude/agents/` — Specialized subagents (future)
+- `.claude/rules/` — Path-specific instructions (future)
+- `skills/` — Skill runtime data (scripts, config, output). Skill definitions live in `.claude/skills/`.
 - `cron/` — Job scheduler. `jobs.json` defines scheduled tasks, `runner.sh` executes them, crontab runs the heartbeat every 10 min.
 - `scripts/` — Utility scripts (publish pipeline, etc.) — not skills, but plumbing skills use.
 - `memory/` — Daily logs (`YYYY-MM-DD.md`), append-only, one per day
@@ -43,6 +45,11 @@ Two layers, both plain markdown:
 2. **Curated memory** (auto-memory `MEMORY.md` + topic files) — Persistent knowledge loaded every session. Promote important patterns from daily logs here. Keep MEMORY.md under 200 lines.
 
 **When to write:** End of meaningful sessions, when decisions are made, when learning user preferences, before context compression.
+
+## Publishing (GitHub Pages)
+
+- Site lives in `docs/`. Index at `docs/index.html`, pages in `docs/pages/`.
+- **Auto-push:** When creating or editing pages in `docs/`, always commit and push to `origin/main` immediately. No need to ask.
 
 ## Working Conventions
 

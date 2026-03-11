@@ -13,11 +13,11 @@
       },
       "command": "python3 skills/x/fetch.py",
       "state": {
-        "lastRunAtMs": 1773159868411,
-        "nextRunAtMs": 1773217800000,
+        "lastRunAtMs": 1773234196545,
+        "nextRunAtMs": 1773390600000,
         "lastStatus": "ok",
         "lastError": null,
-        "lastDurationMs": 47420
+        "lastDurationMs": 90196
       }
     }
   ]
